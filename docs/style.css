@@ -1,0 +1,156 @@
+body {
+    /* font-size: 28px; */
+    margin: 0px;
+
+
+}
+
+h1 {
+    font-family: 'Nunito', sans-serif;
+}
+
+.navul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    top: 0;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    z-index: 1 !important;
+}
+
+.contentnavbar {
+    font-family: 'Nunito', sans-serif;
+
+    /* border-radius: 25px 25px 0px 0px; */
+    z-index: 1;
+    margin-top: 20px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.navli {
+    float: left;
+}
+
+.navli a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.active {
+    background-color: #0077ff;
+}
+
+.header {
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    background-color: rgb(224, 219, 219);
+    padding: 10px;
+    font-size: 28px;
+    /* border-top-left-radius: 25px; */
+    /* border-top-right-radius: 25px; */
+    /* margin-bottom: 10px; */
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.navbar {
+    font-family: 'Nunito', sans-serif;
+
+    /* border-bottom-left-radius: 25px; */
+    /* border-bottom-right-radius: 25px; */
+    z-index: 1;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.personalnavbar {
+    font-family: 'Nunito', sans-serif;
+    border-radius: 10px;
+    width: 598px;
+    background-color: rgb(139, 139, 139);
+}
+
+.personalactive {
+    background-color: rgb(78, 78, 78);
+}
+
+.card {
+    background-color: rgb(240, 235, 235);
+    padding: 10px 40px 10px 40px;
+    border-radius: 25px;
+    border: 2px solid #0077ff;
+    margin: 20px 16px 0px 16px;
+    overflow: auto;
+
+}
+
+.topcard {
+    background-color: rgb(240, 235, 235);
+    padding: 10px 40px 10px 40px;
+    border-radius: 0px 0px 25px 25px;
+    border: 2px solid #0077ff;
+    margin: 0px 16px 0px 16px;
+    overflow: auto;
+
+}
+
+#footer {
+    margin-bottom: 20px;
+}
+
+p {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+}
+
+.nGY2GThumbnailImageTitle {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    background: rgba(34, 34, 34, .75) !important;
+}
+
+li {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+}
+
+h2 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+}
+
+.subtitle {
+    font-family: 'Nunito', sans-serif;
+}
+
+#picofme {
+    float: left;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.personalityimage {
+    float: left;
+    margin-right: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#careerpath {
+    border-radius: 10px;
+}

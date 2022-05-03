@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/css/nanogallery2.min.css" rel="stylesheet"
+        type="text/css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/jquery.nanogallery2.min.js"></script>
+
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>The IT World - Project Idea</title>
+</head>
+
+<body onload="scroll();">
+    <div class="header">
+        <h1 style="font-size: 1.5em;">TUE #14 - The Back Table</h1>
+        <p class="subtitle">COSC1078 - Intro to IT - The IT World</p>
+    </div>
+
+    <ul class="navbar navul" id="top-menu">
+        <li class="navli"><a href="index.html">Team Profile</a></li>
+        <li class="navli"><a href="industry-data.html">Industry Data</a></li>
+        <li class="navli"><a href="it-work.html">IT Work</a></li>
+        <li class="navli"><a href="it-technologies.html">IT Technologies</a></li>
+        <li class="active navli"><a href="project-idea.html">Project Idea</a></li>
+    </ul>
+
+    <div class="card" id="introduction">
+        <h1>Overview</h1>
+        <p>We plan to create a website and phone application which together allow an individual to print out QR Codes or
+            write NFC tags that can facilitate a scavenger hunt. The objectives will be called “beacons” and the game
+            “host” can create a certain amount of them which the program will then convert into either QR Codes or allow
+            the host to write onto NFC tags. These “beacons” can then be placed in random locations in a certain area
+            (can be as small as a room or even cover entire countries!) and the players will have to scan the QR Code or
+            NFC tag using the corresponding mobile application, which keeps track of remaining beacons in the game and
+            can give out hints to the player. The host can set up the game in multiple modes such as assigning players
+            to teams or only allowing the beacons to be acquired in a certain order. The host will be able to see all
+            the progress on their device and will be notified of the winner.
+        </p>
+        <h2>Hosting:</h2>
+        <p>On the website, the host will create a game that will have a unique code and will select the number of
+            beacons they want. Here they will be able to individually name each beacon, enter its geographic location
+            (optional), add a clue on how to find the beacon (optional) and enter a message they want to be displayed
+            when a player captures the beacon (optional). After adding all beacons, the host can set the game mode and
+            can then pick if the game will be played with QR Codes or via NFC. If the host selects QR Code, a pdf will
+            be generated containing a QR Code for each location which whey can place there. If NFC is selected, the host
+            will be prompted to switch to the phone app on an NFC capable phone, where they will be prompted to present
+            an NFC card to write to for each beacon.
+        </p>
+        <h2>Game Modes:</h2>
+        <p>The game can be played as a private group or open to the public, when private group beacons are scanned,
+            they will require the user to be authenticated before the app accepts them.<br><br>
+            The host can pick if the beacons can be captured in any order or a specific order.<br><br>
+            If the host supplied a geographical location for a beacon when creating the lobby they can enable
+            location verification on the players' devices.<br><br>
+            verification, where the player's device location will have to be within a certain radius of the beacon
+            location when it is scanned to deter cheating.<br><br>
+            Individual: First player to capture all beacons will win.<br><br>
+            Team: First team to capture all beacons will win.<br><br>
+            Rush: Once a player/team captures a beacon no one else can scan it, once all beacons are captured the
+            player/team with the majority of beacons will win.
+        </p>
+        <h2>Playing:</h2>
+        <p>The player will need to log in on either the mobile app or mobile-friendly website. When they scan a QR Code
+            or NFC tag it will be read by the app/website and if the user is logged in and has access to the particular
+            games lobby, it will be added to their inventory. They will be able to see a list of all the beacons in the
+            game and view hints on how to access them, if it is a team game relevant statistics will also be displayed.
+            If the host has enabled location verification the app/website will request the user's location to verify
+            that they are physically near the beacon location.</p>
+    </div>
+    <div class="card" id="gallery">
+        <h1>Mockups</h1>
+        <div id="nanogallery2" data-nanogallery2='{
+            "thumbnailHeight": 600,
+            "thumbnailHoverEffect2": "scale120"
+
+            }'>
+            <p>Login Screen</p>
+            <!-- gallery content -->
+            <a href="img/mockups/1.png" data-ngThumb="img/mockups/1.png">
+                <p>Login Screen</p>
+            </a>
+            <a href="img/mockups/2.png" data-ngThumb="img/mockups/2.png">
+                <p>User Home Page</p>
+            </a>
+            <a href="img/mockups/3.png" data-ngThumb="img/mockups/3.png">
+                <p>User Beacons Page</p>
+            </a>
+            <a href="img/mockups/4.png" data-ngThumb="img/mockups/4.png">
+                <p>User Inventory Page</p>
+            </a>
+            <a href="img/mockups/5.png" data-ngThumb="img/mockups/5.png">
+                <p>Host Home Page</p>
+            </a>
+            <a href="img/mockups/6.png" data-ngThumb="img/mockups/6.png">
+                <p>Host "My Games"</p>
+            </a>
+            <a href="img/mockups/7.png" data-ngThumb="img/mockups/7.png">
+                <p>Host "Create New Game"</p>
+            </a>
+            <a href="img/mockups/8.png" data-ngThumb="img/mockups/8.png">
+                <p>Host Customise Beacons</p>
+            </a>
+            <a href="img/mockups/9.png" data-ngThumb="img/mockups/9.png">
+                <p>Host Game Type</p>
+            </a>
+            <a href="img/mockups/10.png" data-ngThumb="img/mockups/10.png">
+                <p>Host QR Code Generation</p>
+            </a>
+            <a href="img/mockups/11.png" data-ngThumb="img/mockups/11.png">
+                <p>Host NFC Tag Generation</p>
+            </a>
+        </div>
+        <a href="https://github.com/nanostudio-org/nanogallery2" target="_blank">
+            <p>Image Gallery Library: nanogallery2</p>
+        </a>
+    </div>
+    <div class="card">
+        <h1>Security</h1>
+        <p>If this project is released to the public, there may be personal data that has to be handled appropriately
+            and
+            additionally security risks with the use of QR Codes and NFC Tags. The service may collect the player's
+            location
+            if the host requires it and that information should only be stored for verification and not stored on the
+            server
+            as that would add unnecessary security risks to the service. If the service was to collect a users location
+            it
+            should only be sent to the server to be checked against the beacon location and then instantly deleted. If
+            the
+            location was to be left on the server and a malicious entity gained access to it, it could be used to track
+            a
+            users location for nefarious purposes. Additionally, by not permanently storing user location it can reduce
+            some
+            liabilities towards us in regards to confidential information storage.</p>
+
+        <p>It would also be ideal if no personal information except for a user identifier was stored on servers. This
+            would
+            mean that the personalization details for a user (such as name, preferences) would only be stored on the
+            users
+            device, and the user app would use a UUID (Unique User Identifier) to communicate with the server, making
+            the
+            service safer overall. One disadvantage to this approach would be that if a user switched devices, all of
+            their
+            progress would effectively be lost, as there will be no method for the server to authenticate the user.</p>
+
+        <p> The use of QR Codes and NFC Tags also has inherent security risks, as a user may scan a malicious QR Code or
+            tap
+            a malicious NFC Tag designed to look like a beacon code/tag. Currently, there are no known exploits that
+            allow
+            code execution on devices that scan QR Codes or NFC Tags, but there have been in the past and thus can exist
+            in
+            the future, this risk will always exist and there is no easy solution other than temporarily disabling the
+            service if an exploit like such is revealed. Additionally, if the user app is a progressive web app, it will
+            be
+            sandboxed within another layer of security, within the users browser app, reducing the likelihood of a
+            zero-day
+            QR Code exploit affecting our service. </p>
+
+    </div>
+
+    <div class="card">
+        <h1>Main Technologies</h1>
+        <h2>QR Codes:</h2>
+        <p>QR Codes is short for Quick Response Codes, where as the name suggests they can be quickly read and processed
+            by a reader. It is most similar to barcodes however it is capable of storing larger amounts of information
+            within a combination of pixels in a square grid. The data that can be stored within a QR code includes:
+            website URLs, phone numbers or up to 4000 characters of text. Since its creation and release, QR codes have
+            been used for many purposes. They are used for marketing or promotional purposes, marking and tracking parts
+            within supply chains and as of the recent pandemic times, it is used for contact tracing by getting people
+            to check in to places they go to. The use of QR codes within this game would be very simple as they can
+            easily be generated and then read, making it a better experience for both the host and players. However, it
+            may pose an increased security risk because it is so easy to generate, where as stated above other people
+            can create their own QR codes disguised as the game’s, and then potentially steal personal data from
+            unsuspecting players.</p>
+        <h2>NFC Tags:</h2>
+        <p>NFC which is short for Near Field Communication is a wireless technology that allows communication between
+            two devices that are within close proximity of each other. The use of NFC tags are often very convenient and
+            versatile as all it requires is a tap on the device, which is much quicker and easier than having to open up
+            an app and wait for it to scan, such as the use of QR codes. NFC tags most commonly come in the form of a
+            circular sticker where there lies a microchip that consists of a copper coil and a tiny storage device. The
+            connection is created when a device (NFC reader) is brought into proximity of the tag, a process called
+            Electromagnetic Induction occurs where the tag generates a bit of power and then it can transmit data to the
+            device. NFC tags are most commonly used in things such as credit cards, hotel keypasses, train cards (Myki,
+            Opal) as well as an easy way to connect bluetooth devices just by a tap. NFC tags are also more safer than
+            QR codes as it provides more flexibility and control, as it can be programmed in ways that make it more
+            secure than a simple barcode.</p>
+        <h2>Progressive Web Apps:</h2>
+        <p>Progressive Web applications are a cross between a web application and native installed application,
+            achievable through the collaboration of various technologies. Because of that, it enables many advantages
+            that derive from either the usage of a web app or native app. A PWA can be identified when it includes
+            certain features such as: being able to be found through a search engine, able to be installed on a device
+            as an application, can be shared by a URL, able to function offline or with a poor network connection, and
+            most importantly, it is secure from malicious personnel. PWS with the use of HTTPS web protocol ensures that
+            any data stored on the application is secure and is not tampered with, as the technology protects against
+            intruders. The use of PWS also ensures that users, in instances where they are signing up to join the game,
+            or while they are playing the game, will not accidentally scan the wrong QR code or NFC tag as all of it
+            will be linked directly to the URL. This means that each QR code or NFC tag should take the user directly to
+            the correct application. Using PWA in the implementation for this game would mitigate a lot of the security
+            concerns that arose from just using QR codes or NFC tags by itself.
+        </p>
+    </div>
+
+    <div class="card">
+        <h1>Outcome</h1>
+        <p>If this project is successful it will easily allow primary/secondary schools and event organisers to set up a
+            scavenger hunt game. It will save them large amounts of time as they need to do very little physical work to
+            set it up and for public games, the general public will get to enjoy mysterious QR Codes (although if you
+            scan a random QR Code that's concerning) that lead them around places. If governments set up a game that
+            covers a city it can cause great engagement within the city, especially with tourists.
+        </p>
+    </div>
+
+    <div class="card" id="footer">
+        <h2>Created by TUE #14: The Back Table</h2>
+        <p>Sanchit Sharma (S3949232)</p>
+        <p>Clinton Thai (S3840992)</p>
+        <p>Vivek Chaudhary (S3932078)</p>
+        <p>Navdeep Singh (S3944633)</p>
+        <p>Pratham Shah (S3943888)</p>
+        <p>Danieal Dawit (S3943279)</p>
+        <p>Jiaqi Guan (S3815613)</p>
+        <h2>COSC1078 - Intro to IT - The IT World</h2>
+        <p><a href="https://github.com/sanchits2003/INTROTOIT2">Github Repository</a></p>
+    </div>
+
+</body>
+
+</html>
