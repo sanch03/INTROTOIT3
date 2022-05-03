@@ -1,2 +1,0 @@
-# INTROTOIT2
-COSC1078 Assignment 2
