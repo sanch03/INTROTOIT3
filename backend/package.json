@@ -1,6 +1,6 @@
 {
-  "name": "@continuitydata/fluidra-dist",
-  "description": "Continuity Data Fluidra Distrubution",
+  "name": "@",
+  "description": "",
   "version": "0.0.1",
   "dependencies": {
     "@okta/jwt-verifier": "1.0.0",
