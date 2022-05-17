@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 
-const MySQLStore = require('express-mysql-session')(session);
+
 const mustacheExpress = require('mustache-express');
 const path = require('path');
 
@@ -9,21 +9,8 @@ const path = require('path');
 //const sql = require(path.join(process.cwd(),'db.js'));
 const templateDir = path.join(__dirname, '.', 'views');
 const frontendDir = path.join(__dirname, '.', 'public');
+const sql = require(path.join(__dirname, '.', 'db.js'));
 module.exports = function WebServer() {
-
-
-
-  var options = {
-    host: '',
-    port: 3306,
-    user: '',
-    password: '',
-    database: '',
-    clearExpired: true,
-    // How frequently expired sessions will be cleared; milliseconds:
-    //900000
-    checkExpirationInterval: 900000
-  };
 
   const app = express();
 
@@ -89,7 +76,13 @@ module.exports = function WebServer() {
   }); */
 
 
-
+  app.post('/api/capture', async function (req, res) {
+    let userid = req.body['userid']
+    let beaconid = req.body['beaconid']
+    let gameid = await api.capturecheck(userid, beaconid)
+    res.send(gameid)
+    //res.sendStatus(200)
+  })
 
 
   app.use('/', express.static(frontendDir));
@@ -105,3 +98,64 @@ module.exports = function WebServer() {
   })
 
 };
+
+
+
+function api() {
+  function capturecheck(userid, beaconid) {
+    return new Promise(function (resolve) {
+      sql.query("SELECT game_id FROM beacon WHERE beacon_id = ?", [beaconid], (err, res) => {
+        if (err) { console.log("error: ", err); resolve(err, null); return; }
+        if (!res[0]) {
+          resolve("Invalid Beacon ID")
+          return;
+        }
+        let gameid = res[0].game_id
+
+        sql.query("SELECT user_id FROM plays WHERE user_id = ? AND game_id = ?", [userid, gameid], (err, res) => {
+          if (err) { console.log("error: ", err); resolve(err, null); return; }
+          if (!res[0]) {
+            resolve("User not registered in this game")
+            return;
+          }
+
+          sql.query("INSERT into collectedbeacon VALUES(?,?)", [beaconid, userid], (err, res) => {
+            if (err) { console.log("error: ", err); resolve(err.code, null); return; }
+            console.log(res);
+            resolve("Success!")
+
+
+
+          });
+
+
+
+        });
+
+
+
+      });
+    });
+
+  }
+
+  function capture() {
+    return new Promise(function (resolve) {
+      sql.query("SELECT COUNT(passfail) AS response FROM " + sql.escapeId(v1) + " WHERE day= ? AND passfail='NOK'", [v2], (err, res) => {
+        if (err) { console.log("error: ", err); resolve(err, null); return; }
+
+
+        resolve(res[0]['response']);
+
+      });
+    });
+
+  }
+
+  return {
+    capturecheck, capture
+  };
+
+}
+
+api = api();
