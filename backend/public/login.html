@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Login - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-Centered-Links.css">
 </head>
@@ -27,18 +29,37 @@
                                         <h4 class="text-dark mb-4">Welcome Back!</h4>
                                     </div>
                                     <form class="user">
-                                        <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"></div>
-                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
+                                        <div class="mb-3"><input class="form-control form-control-user" type="email"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address..." name="email"></div>
+                                        <div class="mb-3"><input class="form-control form-control-user" type="password"
+                                                id="exampleInputPassword" placeholder="Password" name="password"></div>
                                         <div class="mb-3">
                                             <div class="custom-control custom-checkbox small">
-                                                <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
+                                                <div class="form-check"><input
+                                                        class="form-check-input custom-control-input" type="checkbox"
+                                                        id="formCheck-1"><label
+                                                        class="form-check-label custom-control-label"
+                                                        for="formCheck-1">Remember Me</label></div>
                                             </div>
-                                        </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
+                                        </div><button class="btn btn-primary d-block btn-user w-100"
+                                            type="submit">Login</button>
                                         <hr>
                                         <hr>
                                     </form>
-                                    <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
-                                    <div class="text-center"><a class="small" href="register.html">Create an Account!</a></div>
+                                    <div class="text-center"><a class="small" href="forgot-password.html">Forgot
+                                            Password?</a></div>
+                                    <div class="text-center"><a class="small" href="register.html">Create an
+                                            Account!</a></div>
+                                    <div class="text-center">Select from one of the pre generated accounts below:</div>
+                                    <ul id="accounts" class="accounts">
+                                        <li><a href="javascript:void(0)">assessor1</a></li>
+                                        <li><a href="javascript:void(0)">assessor2</a></li>
+                                        <li><a href="javascript:void(0)">sanchit</a></li>
+                                        <li><a href="javascript:void(0)">clinton</a></li>
+                                        <li><a href="javascript:void(0)">jack</a></li>
+                                    </ul>
+
                                 </div>
                             </div>
                         </div>
@@ -49,6 +70,14 @@
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script>
+
+        console.log("hi")
+        $(".accounts").on('click', 'li', function (e) {
+            localStorage.setItem("account", $(this)[0].childNodes[0].innerHTML)
+            window.location.href = "inventory.html";
+        });
+    </script>
 </body>
 
 </html>

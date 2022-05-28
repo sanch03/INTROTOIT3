@@ -6,20 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>iitproject</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-Centered-Links.css">
 </head>
 
 <body style="background: rgb(200,211,244);">
     <nav class="navbar navbar-light navbar-expand-md">
-        <div class="container-fluid"><a class="navbar-brand" href="#">Project Idea</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid"><a class="navbar-brand" href="#">On The Hunt</a><button data-bs-toggle="collapse"
+                class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle
+                    navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="userhome.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="scan.html">Scan QR/NFC</a></li>
-                    <li class="nav-item"><a class="nav-link" href="beacons.html" style="color: rgb(0,0,0);">Beacons</a></li>
-                    <li class="nav-item"><a class="nav-link" href="inventory.html" style="color: rgb(0,0,0);">Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(0,0,0);">Beacons</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="inventory.html"
+                            style="color: rgb(0,0,0);">Inventory</a></li>
                     <li class="nav-item"><a class="nav-link active" href="login.html">Logout</a></li>
                 </ul>
             </div>
@@ -33,11 +39,57 @@
     <div class="card text-center" style="margin: 35px;height: 300px;">
         <div class="card-body">
             <h4 class="card-title">Scan QR / NFC Tag</h4>
-            <picture><img style="width: 200px;height: 200px;"></picture>
+            <div class="col" style="margin-right: 35px;margin-left: 35px; margin-bottom: 15px;">
+
+                <a href="qrscan"><button class="btn btn-primary" type="button">Scan QR Code</button></a>
+            </div>
+            <div class="col" style="margin-right: 35px;margin-left: 35px; margin-bottom: 15px;">
+                <a href="nfcscan.html"><button class="btn btn-primary" type="button">Scan NFC Tag</button></a>
+            </div>
+            <div class="col" style="margin-right: 35px;margin-left: 35px;">
+                Manually enter beacon id (only possible in prototype stages)
+                <input id="beaconid" class="input" type="input"></input>
+                <button id="processbtn" class="btn btn-primary" type="button">Process ID</button>
+            </div>
+            <br>
+            Prototype Information: As this is currently in the prototype stage, beacon IDs are not random and are
+            instead formatted in a way to easily test. The beaconID format is {gameid}{beaconnumber}. So beacon number 2
+            in the game "cbdhunt" would have the beacon id "cbdhunt2". Try entering that (or any other unacquired
+            beacon) into the input field and see your inventory update, or scan the any of the sample QR Codes below.
         </div>
     </div>
+    <p id="accountinfo" style="margin: 35px;">Signed in as:</p>
+    <p style="margin: 35px;"><a href="login.html">Logout</a></p>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script>
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        let value = params.bid; // "some_value"
+        if (value) {
+            $("#beaconid").val(value)
+        }
+
+        let account = localStorage.getItem("account");
+        if (account == undefined) {
+            window.location.href = "login.html";
+        } else {
+            $("#accountinfo")[0].innerHTML = `Signed in as: ${account}`
+        }
+    </script>
+
+    <script>
+        $("#processbtn").click(function () {
+            $.post('http://127.0.0.1:3000/api/capture',  // url
+                { userid: localStorage.getItem("account"), beaconid: $("#beaconid").val() }, // data to be submit
+                function (data, status, xhr) {   // success callback function
+                    console.log(data);
+                    window.location.href = "inventory.html";
+
+                });
+        });
+    </script>
 </body>
 
 </html>

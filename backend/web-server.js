@@ -84,6 +84,13 @@ module.exports = function WebServer() {
     //res.sendStatus(200)
   })
 
+  app.post('/api/userinfo', async function (req, res) {
+    let userid = req.body['userid']
+    let resp = await api.userinfo(userid)
+    res.send(resp)
+    //res.sendStatus(200)
+  })
+
 
   app.use('/', express.static(frontendDir));
 
@@ -139,13 +146,49 @@ function api() {
 
   }
 
-  function capture() {
+  async function userinfo(userid) {
     return new Promise(function (resolve) {
-      sql.query("SELECT COUNT(passfail) AS response FROM " + sql.escapeId(v1) + " WHERE day= ? AND passfail='NOK'", [v2], (err, res) => {
+      sql.query(`SELECT plays.game_id, game.winner_id FROM plays
+JOIN game ON plays.game_id = game.game_id WHERE plays.user_id = ?`, [userid], async (err, res) => {
         if (err) { console.log("error: ", err); resolve(err, null); return; }
+        if (!res[0]) {
+          resolve("User not registered in any game")
+          return;
+        }
+        let games = []
+
+        for (let i = 0; i < res.length; i++) {
+          let curgame = { "gameid": res[i]['game_id'], "winnerid": res[i]['winner_id'], "beacons": {} }
+          curgame["beacons"] = await api.userinfo2(userid, res[i]['game_id'])
+          games.push(curgame)
 
 
-        resolve(res[0]['response']);
+
+
+        }
+
+
+        resolve(JSON.stringify(games))
+
+
+
+
+      });
+    });
+
+
+  }
+
+  function userinfo2(userid, gameid) {
+    return new Promise(function (resolve) {
+      sql.query(`SELECT beacon_number, beacon.beacon_id, worded_hint, collectedbeacon.beacon_id collectedid FROM plays
+      JOIN beacon ON plays.game_id  = beacon.game_id
+      LEFT JOIN collectedbeacon ON beacon.beacon_id = collectedbeacon.beacon_id AND plays.user_id = collectedbeacon.user_id
+      WHERE plays.user_id = ? AND plays.game_id = ? ORDER BY beacon_number ASC`, [userid, gameid], (err, res) => {
+
+        if (err) { console.log("error: ", err); resolve(err, null); return; }
+        // console.log(JSON.stringify(res2))
+        resolve(res)
 
       });
     });
@@ -153,7 +196,7 @@ function api() {
   }
 
   return {
-    capturecheck, capture
+    capturecheck, userinfo, userinfo2
   };
 
 }
