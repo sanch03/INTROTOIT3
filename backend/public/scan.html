@@ -81,7 +81,7 @@
 
     <script>
         $("#processbtn").click(function () {
-            $.post('http://127.0.0.1:3000/api/capture',  // url
+            $.post('https://introtoit.sanchit.com.au/api/capture',  // url
                 { userid: localStorage.getItem("account"), beaconid: $("#beaconid").val() }, // data to be submit
                 function (data, status, xhr) {   // success callback function
                     console.log(data);

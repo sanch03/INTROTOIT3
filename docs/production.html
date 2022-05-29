@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="slideshow.css">
+    <title>The IT World - Industry Data</title>
+</head>
+
+<body onload="scroll();">
+    <div class="header">
+        <h1 style="font-size: 1.5em;">TUE #14 - The Back Table</h1>
+        <p class="subtitle">COSC1078 - Intro to IT - The IT World</p>
+    </div>
+
+    <ul class="navbar navul" id="top-menu">
+        <li class="navli"><a href="index.html">Team Profile</a></li>
+        <li class="navli"><a href="project-plan.html">Project Plan/Description</a></li>
+        <li class="navli"><a href="skills-and-jobs.html">Skills and Jobs</a></li>
+        <li class="active navli"><a href="production.html">Production</a></li>
+    </ul>
+
+    <ul class="contentnavbar navul sticky" id="content-menu">
+        <li class="active navli"><a href="#mockup">Mockup Diagrams</a></li>
+        <li class="navli"><a href="#sql">SQL Database</a></li>
+        <li class="navli"><a href="#backend">Backend Development</a></li>
+        <li class="navli"><a href="#frontend">Frontend Development</a></li>
+    </ul>
+
+    <div class="card" id="mockup">
+        <h1><b>Mockup Diagrams</b></h1>
+        <img src="img/mockups/mockupssc.png">
+
+
+
+    </div>
+
+    <div class="card" id="sql">
+        <h1><b>SQL Database</b></h1>
+        <h2>Database Specifications:</h2>
+        <ul>
+            <li>A user should be identified by a unique ID</li>
+            <li>A user should be able to host and play multiple games</li>
+            <li>A game can have one-to-many beacons</li>
+            <li>A user can “collect” multiple beacons per game</li>
+            <li>A beacon can only be a part of one game</li>
+            <li>Beacons can optionally have worded hints, geographical hints, and an exact location value for the host
+                to
+                see.</li>
+            <li>A game can either be fully QR Code based, or fully NFC Tag Based</li>
+
+
+        </ul>
+        <h2>Entity Relation Diagram:</h2>
+        <img src="img/erdiagram.png" style="height: 600px;" alt="">
+
+        <h2>Relational Model:</h2>
+        <p><u>Step 1: Map Strong Entities</u></p>
+        <img src="img/sql/s1i1.png">
+        <p><u>Step 2: Map Weak Entities</u></p>
+        <img src="img/sql/s2i1.png">
+        <p><u>Step 3: Map 1:1 Relationships</u></p>
+        <p>No 1:1 Relationships</p>
+        <p><u>Step 4: Map 1:N Relationships</u></p>
+        <p>Hosts Relationship:</p>
+        <img src="img/sql/s4i1.png">
+        <p>Beacon OF Relationship:</p>
+        <img src="img/sql/s4i2.png">
+        <p><u>Step 5: Map M:N Relationships</u></p>
+        <p>Plays Relationship:</p>
+        <img src="img/sql/s5i1.png">
+        <p>Beacon:</p>
+        <img src="img/sql/s5i2.png">
+        <p><u>Step 6: Multi-valued Attributes</u></p>
+        <p>No multivalued attributes</p>
+        <p><u>Step 7: Map higher-degree relationships</u></p>
+        <p>No higher degree relationships</p>
+        <p><u>Final Relational Model:</u></p>
+        <img src="img/sql/finmodel.png">
+        <h2>Data Definition Language (Table Creation Script):</h2>
+        <img src="img/sql/ddl.png">
+        <p>The SQL database was the first tangible artifact that we generated. There were some difficulties in the
+            creation of the database as we used MYSQL, which has slightly different SQL syntax when compared to the
+            database management system we were most confident with, SQLITE.</p>
+    </div>
+
+    <div class="card" id="backend">
+        <h1><b>Backend Development</b></h1>
+        <p>
+            The backend development was one of the most crucial aspects of our projects. It connects the SQL database
+            with
+            the frontend progressive web application. The backend is running on the NodeJS framework, which allows for
+            full
+            stack web development with JavaScript. The NodeJS application uses a module called “Express” that allows for
+            us
+            to serve webpages and serve API requests from the frontend.
+        </p>
+
+        <p>
+            One of the hardest sections of the backend development was accounting for errors. No code is perfect and
+            especially not any that is built in 3 weeks, thus we needed to implement measures to avoid the server
+            crashing.
+            If the backend was to crash, it would normally need to be manually restarted by the server manager and might
+            leave the service down for an extended period. Thus, we added catch all error protection where if an error
+            is
+            encountered the program just automatically reboots. If this project was to be continued in the future, this
+            should be removed and proper error prevention and detection strategies should be implemented, but in our
+            timeframe, we could not implement this.
+        </p>
+
+        <p>
+            A lot of the core functionality is missing from our final project, due to the sheer complexity of those
+            sections. Currently, the project is just in a prototype stage, with the service not accepting any user
+            registrations, game creations, or admin controls. Currently only pre generated accounts can access the
+            service
+            and play games they have automatically been registered in.
+        </p>
+
+        <p>
+            The SQL database we initially created is able to support all of our core features but implementing them in
+            the
+            backend program and frontend code was a challenge and we were only able to get a portion of the core
+            features
+            implemented.
+        </p>
+
+        <p>Backend Code: <a
+                href="https://github.com/sanchits2003/INTROTOIT3/tree/main/backend">https://github.com/sanchits2003/INTROTOIT3/tree/main/backend</a>
+        </p>
+
+    </div>
+
+
+    <div class="card" id="frontend">
+        <h1><b>Frontend Development</b></h1>
+
+
+        <p>Frontend Code: <a
+                href="https://github.com/sanchits2003/INTROTOIT3/tree/main/backend/public">https://github.com/sanchits2003/INTROTOIT3/tree/main/backend/public</a>
+        </p>
+    </div>
+
+    <div class="card" id="footer">
+        <h2>Created by TUE #14: The Back Table</h2>
+        <p>Sanchit Sharma (S3949232)</p>
+        <p>Clinton Thai (S3840992)</p>
+        <p>Vivek Chaudhary (S3932078)</p>
+        <p>Navdeep Singh (S3944633)</p>
+        <p>Pratham Shah (S3943888)</p>
+        <p>Danieal Dawit (S3943279)</p>
+        <p>Jiaqi Guan (S3815613)</p>
+        <h2>COSC1078 - Intro to IT - The IT World</h2>
+        <p><a href="https://github.com/sanchits2003/INTROTOIT2">Github Repository</a></p>
+    </div>
+</body>
+
+</html>
